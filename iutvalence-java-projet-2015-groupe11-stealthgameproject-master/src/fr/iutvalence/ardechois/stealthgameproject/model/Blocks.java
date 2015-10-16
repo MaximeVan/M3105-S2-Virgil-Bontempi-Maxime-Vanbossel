@@ -15,56 +15,21 @@ import javax.swing.ImageIcon;
  */
 public enum Blocks
 {
-	/**
-	 * Floor block.
-	 * 
-	 * @value "0"
-	 */
+
 	FLOOR('0', "/floor.png"),
 	
-	/**
-	 * Wall block.
-	 * 
-	 * @value "1"
-	 */
 	WALL('1', "/wall.png"),
 	
-	/**
-	 * Grass block.
-	 * 
-	 * @value "2"
-	 */
 	GRASS('2', "/grass.png"),
 	
-	/**
-	 * Slab block.
-	 * 
-	 * @value "3"
-	 */
 	SLAB('3', "/slab.png"),
 	
-	/**
-	 * Water block.
-	 * 
-	 * @value "4"
-	 */
 	WATER('4', "/water.png"),
 	
-	/**
-	 * Sand block.
-	 * 
-	 * @value "5"
-	 */
 	SAND('5', "/sand.png");
 	
-	/**
-	 * Block id, only one character.
-	 */
-	private char id;
-	
-	/**
-	 * Graphic representation of the block.
-	 */
+	private char blockId;
+
 	private Icon icon;
 
 	/**
@@ -74,25 +39,15 @@ public enum Blocks
 	 */
 	private Blocks(char id, String filename)
 	{
-		this.id = id;
+		this.blockId = id;
 		this.icon = new ImageIcon(getClass().getResource(filename));
 	}
 
-	/**
-	 * Get the block id.
-	 * 
-	 * @return id
-	 */
 	public char getId()
 	{
-		return this.id;
+		return this.blockId;
 	}
 
-	/**
-	 * Get the block icon.
-	 * 
-	 * @return icon
-	 */
 	public Icon getIcon()
 	{
 		return this.icon;
