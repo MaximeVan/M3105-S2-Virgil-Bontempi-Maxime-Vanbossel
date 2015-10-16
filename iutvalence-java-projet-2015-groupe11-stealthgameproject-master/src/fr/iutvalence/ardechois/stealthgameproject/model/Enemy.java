@@ -68,7 +68,7 @@ public class Enemy
 	
 	public boolean visionFieldIsChecked(Player player)
 	{
-		this.isSeen =  this.visionField.check(player);
+		this.isSeen =  this.visionField.isChecked(player);
 		return getSee();
 	}
 	
