@@ -4,8 +4,6 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 /**
- * Block that compose the map.
- * 
  * @author chayc
  *
  */
@@ -32,11 +30,6 @@ public enum Blocks
 
 	private Icon icon;
 
-	/**
-	 * Give an id to a block.
-	 * 
-	 * @param id
-	 */
 	private Blocks(char id, String filename)
 	{
 		this.id = id;
