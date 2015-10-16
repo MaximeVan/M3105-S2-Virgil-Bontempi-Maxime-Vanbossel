@@ -75,7 +75,7 @@ public class SGPModel
 	 */
 	public boolean hasLose()
 	{
-		return (currentLevel.checkAllVisionFields(player));
+		return (currentLevel.allVisionFieldsAreChecked(player));
 	}
 
 	/**
