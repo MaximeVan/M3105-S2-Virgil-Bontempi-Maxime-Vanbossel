@@ -28,7 +28,7 @@ public enum Blocks
 	
 	SAND('5', "/sand.png");
 	
-	private char blockId;
+	private char id;
 
 	private Icon icon;
 
@@ -39,13 +39,13 @@ public enum Blocks
 	 */
 	private Blocks(char id, String filename)
 	{
-		this.blockId = id;
+		this.id = id;
 		this.icon = new ImageIcon(getClass().getResource(filename));
 	}
 
 	public char getId()
 	{
-		return this.blockId;
+		return this.id;
 	}
 
 	public Icon getIcon()

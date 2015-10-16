@@ -12,63 +12,63 @@ import fr.iutvalence.ardechois.stealthgameproject.exceptions.InvalidPositionExce
 public class Enemy
 {
 
-	private Position enemyPosition;
+	private Position position;
 	
 	private VisionField visionField;
 	
 	/**
 	 * True if the enemy see the target.
 	 */
-	private boolean see;
+	private boolean isSeen;
 	
 	public Enemy(Position position, Direction initDir)
 	{
-		this.enemyPosition = position;
+		this.position = position;
 		this.visionField = new VisionField(position, initDir);
-		this.see = false;
+		this.isSeen = false;
 	}
 	
-	public Position getPosition()
+	public Position position()
 	{
-		return this.enemyPosition;
+		return this.position;
 	}
 
-	public void enemyMovement(Direction direction, Map map) throws InvalidPositionException
+	public void move(Direction direction, Map map) throws InvalidPositionException
 	{
 		switch (direction)
 		{
 		case UP:
-			if (this.enemyPosition.getY() - 1 < 0)
+			if (this.position.getY() - 1 < 0)
 				throw new InvalidPositionException();
 			break;
 		case DOWN:
-			if (this.enemyPosition.getY() + 1 >= map.getMapHeight())
+			if (this.position.getY() + 1 >= map.getMapHeight())
 				throw new InvalidPositionException();
 			break;
 		case LEFT:
-			if (this.enemyPosition.getX() - 1 < 0)
+			if (this.position.getX() - 1 < 0)
 				throw new InvalidPositionException();
 			break;
 		case RIGHT:
-			if (this.enemyPosition.getX() + 1 >= map.getMapWidth())
+			if (this.position.getX() + 1 >= map.getMapWidth())
 				throw new InvalidPositionException();
 			break;
 		}
 		
-		if(map.getBlock(new Position(this.enemyPosition.getX() + direction.getX(), this.enemyPosition.getY()+direction.getY())) != Blocks.WALL && map.getBlock(new Position(this.enemyPosition.getX() + direction.getX(), this.enemyPosition.getY()+direction.getY())) != Blocks.WATER)
-			this.enemyPosition.move(direction);
+		if(map.getBlock(new Position(this.position.getX() + direction.getX(), this.position.getY()+direction.getY())) != Blocks.WALL && map.getBlock(new Position(this.position.getX() + direction.getX(), this.position.getY()+direction.getY())) != Blocks.WATER)
+			this.position.move(direction);
 		
 		this.visionField.update(direction);
 	}
 	
 	public boolean getSee()
 	{
-		return this.see;
+		return this.isSeen;
 	}
 	
-	public boolean checkVisionField(Player player)
+	public boolean visionFieldIsChecked(Player player)
 	{
-		this.see =  this.visionField.check(player);
+		this.isSeen =  this.visionField.check(player);
 		return getSee();
 	}
 	
@@ -78,7 +78,7 @@ public class Enemy
 		
 		try
 		{
-			enemyMovement(Direction.getDirection(random.nextInt(4)), map);
+			move(Direction.getDirection(random.nextInt(4)), map);
 		} catch (InvalidPositionException e)
 		{
 			// Do nothing

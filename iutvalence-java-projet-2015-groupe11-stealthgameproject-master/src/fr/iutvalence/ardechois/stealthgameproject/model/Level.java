@@ -104,7 +104,7 @@ public class Level implements LevelGetter
 	{
 		for (Enemy enemy : enemyList)
 		{
-			if (enemy.checkVisionField(player))
+			if (enemy.visionFieldIsChecked(player))
 				return true;
 		}
 		return false;
@@ -140,7 +140,7 @@ public class Level implements LevelGetter
 		ArrayList<Position> positions = new ArrayList<Position>();
 		for (Enemy enemy : enemyList)
 		{
-			positions.add(enemy.getPosition());
+			positions.add(enemy.position());
 		}
 
 		return positions;
@@ -167,7 +167,7 @@ public class Level implements LevelGetter
 		boolean exists = false;
 		for (Enemy enemy : enemyList)
 		{
-			if(enemy.getPosition().getX() == position.getX() && enemy.getPosition().getY() == position.getY())
+			if(enemy.position().getX() == position.getX() && enemy.position().getY() == position.getY())
 			{
 				exists = true;
 				enemyList.remove(enemy);
